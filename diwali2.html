@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Diwali - Version 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Trebuchet MS', sans-serif;
+            background: #0a0a1a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .main-container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .greeting-box {
+            background: linear-gradient(145deg, rgba(139, 0, 139, 0.3), rgba(255, 140, 0, 0.3));
+            border: 3px solid #ffd700;
+            border-radius: 30px;
+            padding: 60px 80px;
+            box-shadow: 
+                0 0 50px rgba(255, 215, 0, 0.5),
+                inset 0 0 30px rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(10px);
+            animation: boxGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes boxGlow {
+            0%, 100% {
+                box-shadow: 
+                    0 0 50px rgba(255, 215, 0, 0.5),
+                    inset 0 0 30px rgba(255, 215, 0, 0.2);
+            }
+            50% {
+                box-shadow: 
+                    0 0 80px rgba(255, 215, 0, 0.8),
+                    inset 0 0 50px rgba(255, 215, 0, 0.4);
+            }
+        }
+
+        .happy {
+            font-size: 5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #ffd700, #4ecdc4, #ff6b6b);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbowText 4s ease infinite;
+            margin-bottom: 10px;
+            letter-spacing: 5px;
+        }
+
+        .diwali {
+            font-size: 7rem;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 
+                0 0 20px rgba(255, 215, 0, 1),
+                0 0 40px rgba(255, 140, 0, 0.8),
+                0 0 60px rgba(255, 69, 0, 0.6),
+                5px 5px 10px rgba(0, 0, 0, 0.8);
+            animation: pulse 2s ease-in-out infinite;
+            letter-spacing: 8px;
+        }
+
+        @keyframes rainbowText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1);
+                filter: brightness(1);
+            }
+            50% { 
+                transform: scale(1.05);
+                filter: brightness(1.2);
+            }
+        }
+
+        .message {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-top: 30px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            font-style: italic;
+        }
+
+        .decorative-line {
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                #ffd700, 
+                #ff8c00, 
+                #ffd700, 
+                transparent);
+            margin: 30px 0;
+            animation: lineShimmer 2s linear infinite;
+        }
+
+        @keyframes lineShimmer {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+        .rangoli {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            opacity: 0.3;
+        }
+
+        .rangoli-left {
+            top: 10%;
+            left: 5%;
+            animation: rotate 20s linear infinite;
+        }
+
+        .rangoli-right {
+            bottom: 10%;
+            right: 5%;
+            animation: rotate 20s linear infinite reverse;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .rangoli-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 3px solid;
+        }
+
+        .circle1 {
+            width: 100%;
+            height: 100%;
+            border-color: #ff6b6b;
+            top: 0;
+            left: 0;
+        }
+
+        .circle2 {
+            width: 80%;
+            height: 80%;
+            border-color: #ffd700;
+            top: 10%;
+            left: 10%;
+        }
+
+        .circle3 {
+            width: 60%;
+            height: 60%;
+            border-color: #4ecdc4;
+            top: 20%;
+            left: 20%;
+        }
+
+        .circle4 {
+            width: 40%;
+            height: 40%;
+            border-color: #ff8c00;
+            top: 30%;
+            left: 30%;
+        }
+
+        .lotus-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .lotus {
+            width: 60px;
+            height: 60px;
+            position: relative;
+            animation: bloom 3s ease-in-out infinite;
+        }
+
+        .lotus:nth-child(2) { animation-delay: 0.3s; }
+        .lotus:nth-child(3) { animation-delay: 0.6s; }
+        .lotus:nth-child(4) { animation-delay: 0.9s; }
+
+        @keyframes bloom {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                filter: brightness(1);
+            }
+            50% { 
+                transform: scale(1.2) rotate(180deg);
+                filter: brightness(1.3);
+            }
+        }
+
+        .petal {
+            width: 30px;
+            height: 40px;
+            background: linear-gradient(to top, #ff1493, #ff69b4, #ffb6c1);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: 50% 100%;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
+        }
+
+        .petal:nth-child(1) { transform: translate(-50%, -50%) rotate(0deg); }
+        .petal:nth-child(2) { transform: translate(-50%, -50%) rotate(72deg); }
+        .petal:nth-child(3) { transform: translate(-50%, -50%) rotate(144deg); }
+        .petal:nth-child(4) { transform: translate(-50%, -50%) rotate(216deg); }
+        .petal:nth-child(5) { transform: translate(-50%, -50%) rotate(288deg); }
+
+        .center-dot {
+            width: 15px;
+            height: 15px;
+            background: #ffd700;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .greeting-box {
+                padding: 40px 30px;
+            }
+            .happy {
+                font-size: 3rem;
+            }
+            .diwali {
+                font-size: 4rem;
+            }
+            .message {
+                font-size: 1rem;
+            }
+            .rangoli {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+
+    <div class="rangoli rangoli-left">
+        <div class="rangoli-circle circle1"></div>
+        <div class="rangoli-circle circle2"></div>
+        <div class="rangoli-circle circle3"></div>
+        <div class="rangoli-circle circle4"></div>
+    </div>
+
+    <div class="rangoli rangoli-right">
+        <div class="rangoli-circle circle1"></div>
+        <div class="rangoli-circle circle2"></div>
+        <div class="rangoli-circle circle3"></div>
+        <div class="rangoli-circle circle4"></div>
+    </div>
+
+    <div class="main-container">
+        <div class="greeting-box">
+            <div class="happy">HAPPY</div>
+            <div class="decorative-line"></div>
+            <div class="diwali">DIWALI</div>
+            <div class="decorative-line"></div>
+            <p class="message">May your life be filled with light and happiness</p>
+            
+            <div class="lotus-container">
+                <div class="lotus">
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="center-dot"></div>
+                </div>
+                <div class="lotus">
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="center-dot"></div>
+                </div>
+                <div class="lotus">
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="center-dot"></div>
+                </div>
+                <div class="lotus">
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal"></div>
+                    <div class="petal</div>
+                    <div class="petal"></div>
+                    <div class="center-dot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 150; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        createStars();
+    </script>
+</body>
+</html>
